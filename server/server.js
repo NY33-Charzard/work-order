@@ -1,37 +1,18 @@
-const path = require('path');
 const express = require('express');
-//github sucks
 const app = express();
+const path = require('path');
 
-const apiRouter = require('./routes/api');
+const workOrderRouter = require('./routes/workOrderRouter');
 
-const PORT = 3000;
-
-//handle parsing request body
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//uses /dist for static files in webpack production mode
-console.log(process.env.NODE_ENV)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../dist')));
-}
+app.use('/', workOrderRouter);
 
-// Hey Hank, do we need this? Seems like this would be handled with react.
-//app entry point
-app.get('/', (req, res) => {
-  return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
+// Unknown route handler
+app.use('*', (req, res) => res.sendStatus(404));
 
-
-//handles api endpoints in api routes/api.js
-app.use('/api', apiRouter);
-
-
-//unknown route handler
-app.use((req, res) => res.status(404).send('page not found'));
-
-//global error handler
+// Global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
@@ -43,14 +24,7 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-// get -> getting all application associated with specific id 
-
-// post -> adding new app save specific app and send back to the front 
-
-
-//starts server
-app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}.`);
-})
-
-module.exports = app;
+// Create a Node.js HTTP server that listens on port 3333.
+app.listen(3333, () => {
+  console.log('listening on port 3333');
+});
