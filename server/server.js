@@ -7,7 +7,7 @@ const workOrderRouter = require('./routes/workOrderRouter');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use(express.static('client'));
 app.use('/', workOrderRouter);
 
 // Unknown route handler
