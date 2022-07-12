@@ -7,6 +7,7 @@ const router = express.Router();
 
 // a router to return all orders that are open
 router.get('/openOrders', workOrderController.openOrders, (req, res) => {
+    console.log('made it here');
     return res.status(200).json(res.locals.openOrders);
 });
 

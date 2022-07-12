@@ -5,10 +5,17 @@ const path = require('path');
 const workOrderRouter = require('./routes/workOrderRouter');
 const customerRouter = require('./routes/customerRouter');
 
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('client'));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
+
 app.use('/orders', workOrderRouter);
 app.use('/customer', customerRouter);
 

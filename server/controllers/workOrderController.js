@@ -5,18 +5,18 @@ const router = express.Router();
 const workOrderController = {};
 
 workOrderController.openOrders = async (req, res, next) => {
-    const query = 'SELECT * FROM orders WHERE open IS TRUE';
-    try {
-      const data = await db.query(query);
-      res.locals.openOrders = data.rows;
-      return next();
-    } catch (err) {
-      next({
-        log: `Error ocurred in openOrders query controller: ${err}`,
-        status: 400,
-        message: { err: 'An error ocurred in the openOrders query controller'},
-      })
-    }
+  const query = 'SELECT * FROM orders WHERE open IS TRUE';
+  try {
+    const data = await db.query(query);
+    res.locals.openOrders = data.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error ocurred in openOrders query controller: ${err}`,
+      status: 400,
+      message: { err: 'An error ocurred in the openOrders query controller' },
+    })
+  }
 }
 
 workOrderController.closedOrders = async (req, res, next) => {
@@ -29,7 +29,7 @@ workOrderController.closedOrders = async (req, res, next) => {
     next({
       log: `Error ocurred in closedOrders query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the closedOrders query controller'},
+      message: { err: 'An error ocurred in the closedOrders query controller' },
     })
   }
 }
@@ -45,7 +45,7 @@ workOrderController.closeOrder = async (req, res, next) => {
     next({
       log: `Error ocurred in closeOrders query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the closeOrders query controller'},
+      message: { err: 'An error ocurred in the closeOrders query controller' },
     })
   }
 }
@@ -63,7 +63,7 @@ workOrderController.newOrder = async (req, res, next) => {
     next({
       log: `Error ocurred in newOrder query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the newOrder query controller'},
+      message: { err: 'An error ocurred in the newOrder query controller' },
     })
   }
 }
