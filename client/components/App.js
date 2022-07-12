@@ -4,29 +4,26 @@ import Navbar from './Navbar.js';
 import Orders from './Orders.js';
 import TicketColumn from './ticketColumn';
 import Test from './Test';
+import Closed from './Closed.js';
+
 const App = (props) => {
-  return (<>
+  return (
     <Router>
      <Navbar/>
+
      <Routes>
-      <Route path = "/">
-        Open
+      <Route path = "/" element={<TicketColumn />}>
+        {/* <Orders testingProp='Prop Pass Test.' /> */}
       </Route>
      </Routes>
+
      <Routes>
-      <Route path = "/closed">
-        Closed
+      <Route path = "/closed" element={<Closed />}>
       </Route>
      </Routes>
-    
 
-
-
-
-    <Orders testingProp='Prop Pass Test.' />
-    <TicketColumn />
     </Router>
-  </>);
+    );
 };
 
 export default App;
