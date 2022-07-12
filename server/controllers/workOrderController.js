@@ -20,8 +20,19 @@ workOrderController.openOrders = async (req, res, next) => {
     }
 }
 
-workOrderController.closedOrders = (req, res, next) => {
-    const query = 'SELECT * FROM orders WHERE open IS FALSE';
+workOrderController.closedOrders = async (req, res, next) => {
+  const query = 'SELECT * FROM orders WHERE open IS FALSE';
+  try {
+    const data = await db.query(query);
+    res.locals.closedOrders = data.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error ocurred in openOrders query controller: ${err}`,
+      status: 400,
+      message: { err: 'An error ocurred in the openOrders query controller'},
+    })
+  }
 }
 
 module.exports = workOrderController;
