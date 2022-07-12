@@ -23,4 +23,22 @@ customerController.addCustomer = async (req, res, next) => {
   }
 }
 
+customerController.deleteCustomer = async(req, res, next) => {
+  const value = [req.params.id];
+  const query = 'DELETE FROM customer WHERE _id = $1 RETURNING *;'
+
+  try {
+    const data = await db.query(query, value);
+    res.locals.deletedCustomer = data.rows[0];
+    return next();
+  } catch (err) {
+    next({
+      log: `Error ocurred in deleteCustomer query controller: ${err}`,
+      status: 400,
+      message: { err: 'An error ocurred in the deleteCustomer query controller'},
+    })
+  }
+  
+}
+
 module.exports = customerController;
