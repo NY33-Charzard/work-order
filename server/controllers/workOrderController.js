@@ -28,9 +28,9 @@ workOrderController.closedOrders = async (req, res, next) => {
     return next();
   } catch (err) {
     next({
-      log: `Error ocurred in openOrders query controller: ${err}`,
+      log: `Error ocurred in closedOrders query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the openOrders query controller'},
+      message: { err: 'An error ocurred in the closedOrders query controller'},
     })
   }
 }
@@ -45,9 +45,9 @@ workOrderController.closeOrder = async (req, res, next) => {
     return next();
   } catch (err) {
     next({
-      log: `Error ocurred in openOrders query controller: ${err}`,
+      log: `Error ocurred in closeOrders query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the openOrders query controller'},
+      message: { err: 'An error ocurred in the closeOrders query controller'},
     })
   }
 }
