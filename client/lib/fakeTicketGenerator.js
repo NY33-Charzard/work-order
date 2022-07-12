@@ -4,7 +4,6 @@ export default function fakeTicketGenerator() {
     type: '',
     subject: '',
     status: '',
-    category: '',
     priority: '',
     due: '',
     created: '',
@@ -13,53 +12,53 @@ export default function fakeTicketGenerator() {
   // Math.floor(Math.random() * 10);
   switch (Math.floor(Math.random() * 4)) {
     case 0: {
-      ticket.type = 'TASK'
+      ticket.type = 'Matt'
       break;
     }
     case 1: {
-      ticket.type = 'BUG'
+      ticket.type = 'Carol'
       break;
     }
     case 2: {
-      ticket.type = 'REQ'
+      ticket.type = 'Ryan'
       break;
     }
     case 3: {
-      ticket.type = 'OTHER'
+      ticket.type = 'Mark'
       break;
     }
   }
   switch (Math.floor(Math.random() * 8)) {
     case 0: {
-      ticket.subject = 'Login broke'
+      ticket.subject = 'Toilet broke'
       break;
     }
     case 1: {
-      ticket.subject = '404'
+      ticket.subject = 'Sink clogged'
       break;
     }
     case 2: {
-      ticket.subject = 'Img error'
+      ticket.subject = 'Assembly'
       break;
     }
     case 3: {
-      ticket.subject = 'Invalid card'
+      ticket.subject = 'Sink repair'
       break;
     }
     case 4: {
-      ticket.subject = 'Button missing'
+      ticket.subject = 'Leak'
       break;
     }
     case 5: {
-      ticket.subject = 'Gift card error'
+      ticket.subject = 'Burst pipe'
       break;
     }
     case 6: {
-      ticket.subject = 'Address error'
+      ticket.subject = 'Door wont shut'
       break;
     }
     case 7: {
-      ticket.subject = 'Phone number issue'
+      ticket.subject = 'Stuck drawer'
       break;
     }
   }
@@ -81,24 +80,6 @@ export default function fakeTicketGenerator() {
       break;
     }
   }
-  switch (Math.floor(Math.random() * 4)) {
-    case 0: {
-      ticket.category = 'Frontend'
-      break;
-    }
-    case 1: {
-      ticket.category = 'Backend'
-      break;
-    }
-    case 2: {
-      ticket.category = 'Design'
-      break;
-    }
-    case 3: {
-      ticket.category = 'Unkown'
-      break;
-    }
-  }
   switch (Math.floor(Math.random() * 3)) {
     case 0: {
       ticket.priority = 'High'
@@ -115,7 +96,7 @@ export default function fakeTicketGenerator() {
   }
   const randomMonth = (Math.floor(Math.random() * 5));
   const randomDay = (Math.floor(Math.random() * 20));
-  ticket.due = (randomMonth + '/' + (randomDay + Math.floor(Math.random() * 11)) + '/2022');
-  ticket.created = (randomMonth + '/' + randomDay + '/2022');
+  ticket.due = (randomMonth + 1 + '/' + (randomDay + Math.floor(Math.random() * 11)) + '/2022');
+  ticket.created = (randomMonth + 1 + '/' + randomDay + '/2022');
   return ticket;
 }
