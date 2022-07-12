@@ -7,7 +7,7 @@ const customerController = {};
 customerController.addCustomer = async (req, res, next) => {
   const { name } = req.body;
   const value = [name];
-  const query = 'INSERT INTO customer (name) VALUES ($1);' // what does RETURNING * do?
+  const query = 'INSERT INTO customer (name) VALUES ($1) RETURNING *;'
 
   try {
     const data = await db.query(query, value);
