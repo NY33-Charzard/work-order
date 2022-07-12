@@ -1,6 +1,6 @@
 const db = require('../models/workOrderModel.js');
 const express = require('express');
-router = express.Router();
+const router = express.Router();
 
 const workOrderController = {};
 
@@ -59,7 +59,7 @@ workOrderController.newOrder = async (req, res, next) => {
 
   try {
     const data = await db.query(query, value);
-    res.locals.closeOrder = data.rows;
+    res.locals.newOrder = data.rows;
     return next();
   } catch (err) {
     next({

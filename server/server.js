@@ -3,12 +3,14 @@ const app = express();
 const path = require('path');
 
 const workOrderRouter = require('./routes/workOrderRouter');
+const customerRouter = require('./routes/customerRouter');
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('client'));
-app.use('/', workOrderRouter);
+app.use('/orders', workOrderRouter);
+app.use('/customer', customerRouter);
 
 // Unknown route handler
 app.use('*', (req, res) => res.sendStatus(404));
