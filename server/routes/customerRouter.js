@@ -11,8 +11,8 @@ router.post('/addCustomer', customerController.addCustomer, (req, res) => {
 });
 
 // a router to delete a customer
-// router.delete('/deleteCustomer/:id', customerController.deleteCustomer, (req, res) => {
-//   return res.status(200).json(res.locals.deletedCustomer)
-// });
+router.delete('/deleteCustomer/:id', customerController.deleteCustomer, (req, res) => {
+  return res.status(200).json(res.locals.deletedCustomer)
+});
 
 module.exports = router;

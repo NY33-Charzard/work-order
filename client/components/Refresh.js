@@ -11,10 +11,10 @@ export default function Refresh(props) {
     const ordersDataObject = await ordersDataJSON.json();
   }
 
-  render() {
-    const boxes = [];
+  // render() {
+  //   const boxes = [];
 
-  }
+  // }
 
 
   return (
