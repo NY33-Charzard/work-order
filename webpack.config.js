@@ -39,9 +39,11 @@ module.exports = {
       publicPath: '/',
     },
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/api': 'http://localhost:3333',
     },
     compress: true,
+    hot: true,
+    open: true,
     port: 8080,
   },
 };
