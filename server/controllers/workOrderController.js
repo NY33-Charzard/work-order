@@ -4,7 +4,6 @@ const router = express.Router();
 
 const workOrderController = {};
 
-
 workOrderController.openOrders = async (req, res, next) => {
     const query = 'SELECT * FROM orders WHERE open IS TRUE';
     try {
@@ -37,11 +36,10 @@ workOrderController.closedOrders = async (req, res, next) => {
 
 workOrderController.closeOrder = async (req, res, next) => {
   const value = [req.params.id];
-  const query = 'UPDATE orders SET open = false WHERE _id = $1'
+  const query = 'UPDATE orders SET open = false WHERE _id = $1 RETURNING *'
   try {
     const data = await db.query(query, value);
-    // this will just be an empty array
-    res.locals.closeOrder = data.rows;
+    res.locals.closeOrder = data.rows[0];
     return next();
   } catch (err) {
     next({
@@ -59,7 +57,7 @@ workOrderController.newOrder = async (req, res, next) => {
 
   try {
     const data = await db.query(query, value);
-    res.locals.newOrder = data.rows;
+    res.locals.newOrder = data.rows[0];
     return next();
   } catch (err) {
     next({
@@ -69,6 +67,5 @@ workOrderController.newOrder = async (req, res, next) => {
     })
   }
 }
-
 
 module.exports = workOrderController;
