@@ -4,7 +4,6 @@ const router = express.Router();
 
 const workOrderController = {};
 
-
 workOrderController.openOrders = async (req, res, next) => {
     const query = 'SELECT * FROM orders WHERE open IS TRUE';
     try {
@@ -58,7 +57,7 @@ workOrderController.newOrder = async (req, res, next) => {
 
   try {
     const data = await db.query(query, value);
-    res.locals.newOrder = data.rows;
+    res.locals.newOrder = data.rows[0];
     return next();
   } catch (err) {
     next({
@@ -68,6 +67,5 @@ workOrderController.newOrder = async (req, res, next) => {
     })
   }
 }
-
 
 module.exports = workOrderController;

@@ -11,7 +11,7 @@ customerController.addCustomer = async (req, res, next) => {
 
   try {
     const data = await db.query(query, value);
-    res.locals.addCustomer = data.rows;
+    res.locals.addCustomer = data.rows[0];
     return next();
 
   } catch (err) {
