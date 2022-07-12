@@ -1,0 +1,89 @@
+$secondary-color: #f4f4f4;
+$box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+a {
+  color: white;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: #e2dede;
+  padding: 10px 5px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  transition: all 0.5s;
+  border-radius: 30px;
+  padding: 0.3rem 1rem;
+}
+
+.ticketHeader {
+  color: white;
+  font-weight: 100;
+  letter-spacing: 2px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px 5px;
+  display: inline-flex;
+  width: 100%;
+  transition: all 0.5s;
+  padding: 0;
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 30px;
+}
+#ticketCategor {
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.listItem {
+  display: flex;
+  align-content: flex-start;
+}
+#listOptions {
+  background: $secondary-color;
+  color: black;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+a:hover {
+  background: rgb(66, 66, 66);
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.flex-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 20rem;
+  overflow: scroll;
+}
+
+@media all and (max-width: 1000px) {
+}
+
+@media all and (max-width: 500px) {
+}
