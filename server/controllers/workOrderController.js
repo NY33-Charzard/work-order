@@ -55,7 +55,7 @@ workOrderController.closeOrder = async (req, res, next) => {
 workOrderController.newOrder = async (req, res, next) => {
   const { custID, orderInfo } = req.body;
   const value = [custID, orderInfo];
-  const query = 'INSERT INTO orders (cust_account_id, password, open) VALUES ($1,$2, true) RETURNING *';
+  const query = 'INSERT INTO orders (cust_account_id, order_info, open) VALUES ($1,$2, true) RETURNING *';
 
   try {
     const data = await db.query(query, value);
@@ -63,11 +63,12 @@ workOrderController.newOrder = async (req, res, next) => {
     return next();
   } catch (err) {
     next({
-      log: `Error ocurred in openOrders query controller: ${err}`,
+      log: `Error ocurred in newOrder query controller: ${err}`,
       status: 400,
-      message: { err: 'An error ocurred in the openOrders query controller'},
+      message: { err: 'An error ocurred in the newOrder query controller'},
     })
   }
 }
+
 
 module.exports = workOrderController;
