@@ -35,4 +35,39 @@ workOrderController.closedOrders = async (req, res, next) => {
   }
 }
 
+workOrderController.closeOrder = async (req, res, next) => {
+  const value = [req.params.id];
+  const query = 'UPDATE orders SET open = false WHERE _id = $1'
+  try {
+    const data = await db.query(query, value);
+    // this will just be an empty array
+    res.locals.closeOrder = data.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error ocurred in openOrders query controller: ${err}`,
+      status: 400,
+      message: { err: 'An error ocurred in the openOrders query controller'},
+    })
+  }
+}
+
+workOrderController.newOrder = async (req, res, next) => {
+  const { custID, orderInfo } = req.body;
+  const value = [custID, orderInfo];
+  const query = 'INSERT INTO orders (cust_account_id, password, open) VALUES ($1,$2, true) RETURNING *';
+
+  try {
+    const data = await db.query(query, value);
+    res.locals.closeOrder = data.rows;
+    return next();
+  } catch (err) {
+    next({
+      log: `Error ocurred in openOrders query controller: ${err}`,
+      status: 400,
+      message: { err: 'An error ocurred in the openOrders query controller'},
+    })
+  }
+}
+
 module.exports = workOrderController;
