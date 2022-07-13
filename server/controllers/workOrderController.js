@@ -5,7 +5,8 @@ const router = express.Router();
 const workOrderController = {};
 
 workOrderController.openOrders = async (req, res, next) => {
-  const query = 'SELECT * FROM orders WHERE open IS TRUE';
+  // const query = 'SELECT * FROM orders WHERE open IS TRUE';
+  const query = 'SELECT * FROM orders INNER JOIN customer ON orders.cust_account_id = customer._id WHERE open IS TRUE'
   try {
     const data = await db.query(query);
     res.locals.openOrders = data.rows;
@@ -20,7 +21,7 @@ workOrderController.openOrders = async (req, res, next) => {
 }
 
 workOrderController.closedOrders = async (req, res, next) => {
-  const query = 'SELECT * FROM orders WHERE open IS FALSE';
+  const query = 'SELECT * FROM orders INNER JOIN customer ON orders.cust_account_id = customer._id WHERE open IS FALSE';
   try {
     const data = await db.query(query);
     res.locals.closedOrders = data.rows;
