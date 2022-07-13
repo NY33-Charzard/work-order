@@ -37,12 +37,12 @@ const colorPicker = (str) => {
 export default function Tickets(ticket) {
   return (<li><a href="#">
     <div className='listItem'>
-      <div id='listOptions' className='listType'>{ticket.type}</div>
+      {/* <div id='listOptions' className='listType'>{ticket.type}</div> */}
       <div id='listOptions' className='listSubject'>{ticket.subject}</div>
-      <div id='listOptions' className='listStatus' style={{ color: colorPicker(ticket.status) }}>{ticket.status}</div>
-      <div id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{ticket.priority}</div>
-      <div id='listOptions' className='listDue'>{ticket.due}</div>
-      <div id='listOptions' className='listlCreated'>{ticket.created}</div>
+      {/* <div id='listOptions' className='listStatus' style={{ color: colorPicker(ticket.status) }}>{ticket.status}</div> */}
+      {/* <div id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{ticket.priority}</div> */}
+      {/* <div id='listOptions' className='listDue'>{ticket.due}</div> */}
+      {/* <div id='listOptions' className='listlCreated'>{ticket.created}</div> */}
     </div>
   </a></li>)
 }

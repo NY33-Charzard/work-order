@@ -9,21 +9,24 @@ import Closed from './Closed.js';
 
 const App = (props) => {
   return (
-    <Router>
-      <Navbar />
+    <TicketColumn />
+    // <Router>
+    //   <Navbar />
 
-      <Routes>
-        <Route path="/" element={<TicketColumn />}>
-          {/* <Orders testingProp='Prop Pass Test.' /> */}
-        </Route>
-      </Routes>
+    //   <Routes>
+    //     <Route path="/" element={<TicketColumn />}>
+    //       {/* <Orders testingProp='Prop Pass Test.' /> */}
 
-      <Routes>
-        <Route path="/closed" element={<Closed />}>
-        </Route>
-      </Routes>
+    //       {/* <TicketColumn /> */}
+    //     </Route>
+    //   </Routes>
 
-    </Router>
+    // {/* <Routes>
+    //   <Route path="/closed" element={<Closed />}>
+    //   </Route>
+    // </Routes> */}
+
+    // </Router >
   );
 };
 

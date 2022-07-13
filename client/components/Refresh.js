@@ -9,12 +9,10 @@ export default function Refresh(props) {
   const getOrdersData = async () => {
     const ordersDataJSON = await fetch('http://localhost:3333/orders/openOrders');
     const ordersDataObject = await ordersDataJSON.json();
+    console.log(ordersDataObject);
   }
 
-  // render() {
-  //   const boxes = [];
 
-  // }
 
 
   return (
