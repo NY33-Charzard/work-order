@@ -6,6 +6,7 @@ import TicketColumn from './ticketColumn.jsx';
 import Test from './Test';
 import Refresh from './Refresh';
 import Closed from './Closed.js';
+import AddTicket from './AddTicket.js';
 
 const App = (props) => {
   return (
@@ -18,6 +19,10 @@ const App = (props) => {
       </Routes>
       <Routes >
         <Route path="/closed" element={<Closed />}>
+        </Route>
+      </Routes>
+      <Routes >
+        <Route path="/addTicket" element={<AddTicket />}>
         </Route>
       </Routes>
     </Router >
