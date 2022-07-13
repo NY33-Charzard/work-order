@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar.js';
 import Orders from './Orders.js';
-import TicketColumn from './ticketColumn.js';
+import TicketColumn from './ticketColumn.jsx';
 import Test from './Test';
 import Refresh from './Refresh';
 import Closed from './Closed.js';
