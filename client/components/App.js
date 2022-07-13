@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Orders from './Orders.js';
-import TicketColumn from './ticketColumn';
+import TicketColumn, { refreshTickets } from './ticketColumn';
 import Test from './Test';
 const App = (props) => {
   return (<>
