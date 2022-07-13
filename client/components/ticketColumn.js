@@ -20,7 +20,7 @@ const status = {
 function TicketColumn() {
   const [ticketComponents, setTicketsComponents] = useState([]);
   const [tickets, setTickets] = useState([]);
-  const ticketReports = [];
+  let ticketReports = [];
   const sortColumbBy = (key) => {
     if (status[key]) {
       const sortAlphabetically = tickets.slice().sort((a, b) => a[key].localeCompare(b[key]))
@@ -32,7 +32,7 @@ function TicketColumn() {
       status[key] = true;
     }
   }
-  const refreshTickets = () => {// Function will set tickets state and generate random tickets
+  const loadFakeData = () => {// Function will set tickets state and generate random tickets
     for (let i = 0; i < 200; i++) {
       ticketReports.push(fakeTicketGenerator());
     }
@@ -43,7 +43,31 @@ function TicketColumn() {
     }
     setTicketsComponents(ticketComponentArr);
   }
-
+  const loadRealData = async () => {
+    ticketReports = [];
+    const ordersDataJSON = await fetch(
+      "http://localhost:3333/orders/openOrders"
+    );
+    const ordersData = await ordersDataJSON.json();
+    for (let i = 0; i < ordersData.length; i++) {
+      const { _id, name, cust_account_id, open, order_info } = ordersData[i];
+      ticketReports.push(
+        <Tickets
+          key={uuidv4()}
+          customer={name}
+          subject={order_info}
+          status={open ? "open" : "closed"}
+          priority={"1"}
+          due={"someduedate"}
+          created={"somecreateddate"}
+        />
+      );
+    }
+    console.log('Response = ' + ticketReports);
+    setTicketsComponents(ticketReports);
+    // setOrders(ticketReports);
+    console.log(ticketReports);
+  }
   return (<>
     <div className="wrapper">
       <nav className="flex-nav">
@@ -62,7 +86,8 @@ function TicketColumn() {
     </div>
     <div className="gradient-border" id="box">
     </div>
-    <button onClick={refreshTickets}>Refresh</button>
+    <button onClick={loadFakeData}>Load Fake Data</button>
+    <button onClick={loadRealData}>Load Real Data</button>
   </>)
 }
 export default TicketColumn;

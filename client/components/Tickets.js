@@ -37,7 +37,6 @@ const colorPicker = (str) => {
   }
 }
 export default function Tickets(ticket) {
-<<<<<<< HEAD
   return (<li><a href="#">
     <div className='listItem'>
       <div id='listOptions' className='listType'>{ticket.customer}</div>
@@ -46,16 +45,14 @@ export default function Tickets(ticket) {
       <div id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{ticket.priority}</div>
       <div id='listOptions' className='listDue'>{ticket.due}</div>
       <div id='listOptions' className='listlCreated'>{ticket.created}</div>
-=======
-  return (<li><a key={uuidv4()} href="#">
+      {/* return (<li><a key={uuidv4()} href="#">
     <div key={uuidv4()} className='listItem'>
       <div key={uuidv4()} id='listOptions' className='listType'>{ticket.type}</div>
       <div key={uuidv4()} id='listOptions' className='listSubject'>{ticket.subject}</div>
       <div key={uuidv4()} id='listOptions' className='listStatus' style={{ color: colorPicker(ticket.status) }}>{(ticket.status).slice(1)}</div>
       <div key={uuidv4()} id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{(ticket.priority).slice(1)}</div>
       <div key={uuidv4()} id='listOptions' className='listDue'>{ticket.due}</div>
-      <div key={uuidv4()} id='listOptions' className='listlCreated'>{ticket.created}</div>
->>>>>>> dev
+      <div key={uuidv4()} id='listOptions' className='listlCreated'>{ticket.created}</div> */}
     </div>
   </a></li>)
 }
