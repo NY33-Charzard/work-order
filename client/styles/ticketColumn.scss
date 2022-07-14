@@ -15,18 +15,21 @@ body {
   margin: 0;
 }
 
-a {
-  color: white;
+a,
+#buttoAddTicket,
+#loadRealBtn,
+#loadFakeBtn {
+  background: linear-gradient(to right, #2c5364, #203a43, #224a5c);
   letter-spacing: 1px;
   text-decoration: none;
-  background: #e2dede;
+  background: linear-gradient(to right, #2d5f75, #5ab5d3, #224a5c);
   padding: 10px 5px;
   display: inline-block;
   width: 100%;
   text-align: center;
   transition: all 0.5s;
-  border-radius: 30px;
-  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  // padding: 0.3rem 1rem;
 }
 
 .ticketHeader {
@@ -34,14 +37,14 @@ a {
   font-weight: 100;
   letter-spacing: 2px;
   text-decoration: none;
-  background: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #2d5f75, #5ab5d3, #224a5c);
   padding: 10px 5px;
   display: inline-flex;
   width: 100%;
   transition: all 0.5s;
   padding: 0;
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 600px;
+  margin: 0.5rem auto;
   overflow: hidden;
   border-radius: 30px;
 }
@@ -56,21 +59,22 @@ a {
   align-content: flex-start;
 }
 #listOptions {
-  background: $secondary-color;
+  background: rgb(187, 229, 250);
   color: black;
   width: 100%;
   overflow: hidden;
   text-align: center;
+  padding: 0.5rem;
 }
 
 a:hover {
-  background: rgb(66, 66, 66);
+  background: #5ab5d3;
 }
 
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px;
+  // padding: 50px;
 }
 
 .flex-nav ul {
@@ -78,7 +82,8 @@ a:hover {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  height: 20rem;
+  height: 25rem;
+  width: 100%;
   overflow: scroll;
 }
 

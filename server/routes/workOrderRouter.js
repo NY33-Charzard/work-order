@@ -18,7 +18,7 @@ router.get("/closedOrders", workOrderController.closedOrders, (req, res) => {
 });
 
 // a router to close an order
-router.patch('/closeOrder/:id', workOrderController.closeOrder, (req, res) => {
+router.put('/closeOrder/:id', workOrderController.closeOrder, (req, res) => {
     return res.status(200).json(res.locals.closeOrder)
 });
 
