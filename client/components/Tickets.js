@@ -37,14 +37,35 @@ const colorPicker = (str) => {
   }
 }
 export default function Tickets(ticket) {
+  const closeTicket = async (id) => {
+    const ticketId = document.getElementById(id);
+    console.log('this is the id to close', id);
+    const addNewTicketRequest = await fetch(
+      'http://localhost:3333/orders/closeOrder/' + id
+      ,
+      {
+        method: "put",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      });
+
+    const parsedCloseTicketResponse = await addNewTicketRequest.json();
+    console.log(parsedCloseTicketResponse);
+    ticketId.remove();
+
+  }
+
   return (<li><a href="#">
-    <div key={uuidv4()} className='listItem'>
+    <div key={uuidv4()} id={ticket.id} className='listItem'>
       <div key={uuidv4()} id='listOptions' className='listType'>{ticket.customer || ticket.type}</div>
       <div key={uuidv4()} id='listOptions' className='listSubject'>{ticket.subject}</div>
       <div key={uuidv4()} id='listOptions' className='listStatus' style={{ color: colorPicker(ticket.status) }}>{(ticket.status).replace(/[0-9]/g, '')}</div>
-      <div key={uuidv4()} id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{(ticket.priority).replace(/[0-9]/g, '')}</div>
-      <div key={uuidv4()} id='listOptions' className='listDue'>{ticket.due}</div>
-      <div key={uuidv4()} id='listOptions' className='listlCreated'>{ticket.created}</div>
+      {/* <div key={uuidv4()} id='listOptions' className='listPriority' style={{ color: colorPicker(ticket.priority) }}>{(ticket.priority).replace(/[0-9]/g, '')}</div> */}
+      {/* <div key={uuidv4()} id='listOptions' className='listDue'>{ticket.due}</div> */}
+      {/* <div key={uuidv4()} id='listOptions' className='listlCreated'>{ticket.created}</div> */}
+      <button id='listOptions' onClick={() => closeTicket(ticket.id)}>    X    </button>
     </div>
   </a></li>)
 }

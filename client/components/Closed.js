@@ -1,6 +1,6 @@
 import fakeTicketGenerator from '../lib/fakeTicketGenerator';
 import Tickets from './Tickets';
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 const buildTickets = (arr) => {
     const output = [];
@@ -68,6 +68,9 @@ function Closed() {
         // setOrders(ticketReports);
         console.log(ticketReports);
     }
+    useEffect(() => {
+        loadRealData();
+    }, [])
     return (<>
         <div className="wrapper">
             <nav className="flex-nav">
@@ -86,8 +89,8 @@ function Closed() {
         </div>
         <div className="gradient-border" id="box">
         </div>
-        <button onClick={loadFakeData}>Load Fake Data</button>
-        <button onClick={loadRealData}>Load Real Data</button>
+        {/* <button onClick={loadFakeData}>Load Fake Data</button>
+        <button onClick={loadRealData}>Load Real Data</button> */}
     </>)
 }
 export default Closed;
