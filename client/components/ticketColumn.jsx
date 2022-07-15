@@ -51,11 +51,8 @@ function TicketColumn() {
   };
   const loadRealData = async () => {
     ticketReports = [];
-    const ordersDataJSON = await fetch(
-      "http://localhost:3333/orders/openOrders"
-    );
+    const ordersDataJSON = await fetch("/api/orders/openOrders");
     const ordersData = await ordersDataJSON.json();
-    console.log("ordersdata", ordersData);
     for (let i = 0; i < ordersData.length; i++) {
       const { orderid, name, cust_account_id, open, order_info } =
         ordersData[i];
@@ -72,10 +69,7 @@ function TicketColumn() {
         />
       );
     }
-    console.log("Response = " + ticketReports);
     setTicketsComponents(ticketReports);
-    // setOrders(ticketReports);
-    console.log(ticketReports);
   };
   useEffect(() => {
     loadRealData();

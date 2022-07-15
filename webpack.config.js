@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -34,17 +36,21 @@ module.exports = {
     ],
   },
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-      publicPath: '/',
-    },
-    historyApiFallback: true,
+    // static: {
+    // directory: path.join(__dirname, 'dist'),
+    // publicPath: '/',
+    // },
+    // historyApiFallback: true,
     proxy: {
-      '/api': 'http://localhost:3333',
-    },
-    compress: true,
-    hot: true,
-    open: true,
+      '/api': {
+        target: 'http://localhost:3333',
+        pathRewrite: { '^/api': '' },
+      }
+    }
+    ,
+    // compress: true,
+    // hot: true,
+    // open: true,
     port: 8080,
-  },
-};
+  }
+}

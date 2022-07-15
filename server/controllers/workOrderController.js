@@ -5,13 +5,10 @@ const router = express.Router();
 const workOrderController = {};
 
 workOrderController.openOrders = async (req, res, next) => {
-  // const query = 'SELECT * FROM orders WHERE open IS TRUE';
   const query = 'SELECT public.orders._id AS orderid, * FROM orders INNER JOIN customer ON orders.cust_account_id = customer._id WHERE open IS TRUE'
   try {
     const data = await db.query(query);
-    console.log(data);
     res.locals.openOrders = data.rows;
-    console.log('res.locals', res.locals.openOrders)
     return next();
   } catch (err) {
     next({
@@ -38,7 +35,6 @@ workOrderController.closedOrders = async (req, res, next) => {
 }
 
 workOrderController.closeOrder = async (req, res, next) => {
-  console.log('close order request is being received');
   const value = [req.params.id];
   const query = 'UPDATE orders SET open = false WHERE _id = $1 RETURNING *'
   try {
@@ -57,8 +53,6 @@ workOrderController.closeOrder = async (req, res, next) => {
 workOrderController.newOrder = async (req, res, next) => {
   const { custID, orderInfo } = req.body;
   const value = [custID, orderInfo];
-  console.log('on the backend', custID, orderInfo)
-  console.log(req)
   const query = 'INSERT INTO orders (cust_account_id, order_info, open) VALUES ($1,$2, true) RETURNING *';
 
   try {
