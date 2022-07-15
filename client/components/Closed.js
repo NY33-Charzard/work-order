@@ -46,7 +46,7 @@ function Closed() {
     const loadRealData = async () => {
         ticketReports = [];
         const ordersDataJSON = await fetch(
-            "http://localhost:3333/orders/closedOrders"
+            "/api/orders/closedOrders"
         );
         const ordersData = await ordersDataJSON.json();
         for (let i = 0; i < ordersData.length; i++) {
@@ -63,10 +63,7 @@ function Closed() {
                 />
             );
         }
-        console.log('Response = ' + ticketReports);
         setTicketsComponents(ticketReports);
-        // setOrders(ticketReports);
-        console.log(ticketReports);
     }
     useEffect(() => {
         loadRealData();

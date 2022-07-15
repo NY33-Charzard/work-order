@@ -39,9 +39,8 @@ const colorPicker = (str) => {
 export default function Tickets(ticket) {
   const closeTicket = async (id) => {
     const ticketId = document.getElementById(id);
-    console.log('this is the id to close', id);
     const addNewTicketRequest = await fetch(
-      'http://localhost:3333/orders/closeOrder/' + id
+      'api/orders/closeOrder/' + id
       ,
       {
         method: "put",
@@ -52,7 +51,6 @@ export default function Tickets(ticket) {
       });
 
     const parsedCloseTicketResponse = await addNewTicketRequest.json();
-    console.log(parsedCloseTicketResponse);
     ticketId.remove();
 
   }

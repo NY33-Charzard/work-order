@@ -6,7 +6,7 @@ import TicketColumn from './ticketColumn.jsx';
 import Test from './Test';
 import Refresh from './Refresh';
 import Closed from './Closed.js';
-import AddTicket from './AddTicket.js';
+import AddTicket from './AddTicket.jsx';
 
 const App = (props) => {
   return (
@@ -14,14 +14,9 @@ const App = (props) => {
       <Navbar />
       <Routes>
         <Route path="/" element={<TicketColumn />}>
-          {/* <Orders testingProp='Prop Pass Test.' /> */}
         </Route>
-      </Routes>
-      <Routes >
         <Route path="/closed" element={<Closed />}>
         </Route>
-      </Routes>
-      <Routes >
         <Route path="/addTicket" element={<AddTicket />}>
         </Route>
       </Routes>
